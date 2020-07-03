@@ -36,23 +36,23 @@
         android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/brzeg_margin">
 
+<!--
         <Button
             android:id="@+id/b1"
             android:tag="b1"
-            android:layout_weight="1"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:visibility="visible"
             android:text="*"
             android:background="@color/colorAAAAAA">
-
         </Button>
+&lt;!&ndash;        android:layout_weight="1"&ndash;&gt;
 
         <Button
             android:id="@+id/b2"
             android:tag="b2"
-            android:layout_weight="1"
+
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="$"
@@ -60,6 +60,10 @@
             android:background="@color/colorAAAAAA">
         </Button>
 
+        -->
+<!--        android:layout_weight="1"-->
+
+<!--
         <Button
             android:id="@+id/b3"
             android:tag="b3"
@@ -69,6 +73,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorAAAAAA">
         </Button>
+
 
         <Button
             android:id="@+id/b4"
@@ -101,6 +106,7 @@
             android:background="@color/colorAAAAAA">
         </Button>
 
+-->
 
     </LinearLayout>
 
