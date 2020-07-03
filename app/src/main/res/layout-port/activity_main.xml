@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorCCCCCC">
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/digit_area"
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <TextView
+            android:id="@+id/tv_cyfra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif"
+            android:text="6"
+            android:textSize="@dimen/cyfra_size"
+            android:textStyle="bold"
+            android:textColor="#000">
+        </TextView>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/buttons_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/brzeg_margin">
+
+        <Button
+            android:id="@+id/b1"
+            android:tag="b1"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="visible"
+            android:text="*"
+            android:background="@color/colorAAAAAA">
+
+        </Button>
+
+        <Button
+            android:id="@+id/b2"
+            android:tag="b2"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:text="$"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAAAAAA">
+        </Button>
+
+        <Button
+            android:id="@+id/b3"
+            android:tag="b3"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAAAAAA">
+        </Button>
+
+        <Button
+            android:id="@+id/b4"
+            android:tag="b4"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAAAAAA">
+        </Button>
+
+        <Button
+            android:id="@+id/b5"
+            android:tag="b5"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAAAAAA">
+        </Button>
+
+        <Button
+            android:id="@+id/b6"
+            android:tag="b6"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@color/colorAAAAAA">
+        </Button>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
