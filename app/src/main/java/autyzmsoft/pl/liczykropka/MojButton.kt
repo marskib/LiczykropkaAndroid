@@ -1,6 +1,7 @@
 package autyzmsoft.pl.liczykropka
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
 import android.util.TypedValue
 
@@ -17,5 +18,7 @@ class MojButton(
         this.setTextSize(TypedValue.COMPLEX_UNIT_PX, textRozmiar)
         this.setTypeface(null, Typeface.BOLD)
         /**/
+        this.setBackgroundColor(Color.GRAY)
+
     } //koniec Konstruktora
 }
