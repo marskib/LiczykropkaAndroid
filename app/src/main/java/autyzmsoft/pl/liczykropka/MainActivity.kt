@@ -64,17 +64,14 @@ class MainActivity : AppCompatActivity() {
     private fun wygenerujButtony() {
         /* Generujemy lBts buttonow; zapamietujemy w tablicy tButtons[]; pokazujemy na ekranie */
         var mb: MojButton //robocza, dla wiekszej czytelnosci
-        val kolko = 9679.toChar()
-        var kolka:String=""
+
         var dx = 0; //margin w pionie pomiedzy klawiszami
         //
         oszacujWysokoscButtonow_i_Tekstu()
         //
         for (i in 0..lBts-1) {
 
-            kolka=kolka.plus(kolko) //zabawa.. 2020.07.03 -> wywalic...
-
-            mb = MojButton(this, btH, txSize, kolka)
+            mb = MojButton(this, (0..6).random(), true, txSize, btH)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 mb.setLetterSpacing(0.4.toFloat())
@@ -89,7 +86,6 @@ class MainActivity : AppCompatActivity() {
             dx = 10;
             if (lBts<4) dx = 20;
             params.setMargins(0,dx,0,0 )
-            //params.width = ViewGroup.LayoutParams.WRAP_CONTENT;
             tButtons[i]?.setLayoutParams(params)
             tButtons[i]?.setVisibility(View.VISIBLE) //za chwile pokaze z opoznieniem - efekciarstwo ;)
         }
@@ -98,17 +94,17 @@ class MainActivity : AppCompatActivity() {
 
 
     var coNaKlikNaBtn = View.OnClickListener {
-       /*
-        var ts = (it as Button).textSize
-        ts = (ts/1.2).toFloat()
-        tv_cyfra.setTextSize(ts)
-        tv_cyfra.text = (it as Button).text.toString()   //hashCode().toString()
-        */
+    /* Wypisanie liczby bądź kolek w polu tv_liczba */
 
-        tv_cyfra.text =
-            (it as Button).text.toString().length.toString()
-
-
+        if ((it as MojButton).getCzyJakLiczba()) { //jezeli na klawiszu jest liczba, to w tv_cyfra wyswietlamu kolka
+            var ts = (it as Button).textSize
+            ts = (ts/1.2).toFloat()
+            tv_cyfra.setTextSize(ts)
+            tv_cyfra.text = ""
+            tv_cyfra.text = (it as MojButton).dajWartoscJakoKolka()
+        }
+        else //jak na klawiszu kolka, to wyswietlamy cyfre
+            tv_cyfra.text = (it as MojButton).dajWartoscJakoCyfre()
     }
 
 
@@ -142,14 +138,7 @@ class MainActivity : AppCompatActivity() {
         if (lBts == 6) {
             btH = height / (lBts + 1)  //button height; doswiadczalnie
         }
-        //txSize = (float) (btH / 1.9); //to 1.9 było ok, ale ponizej 2.0 pozwala zmiescic "dziewczynka" na mniejszych rozdzielczosciach
         txSize = (btH / 3.5).toFloat()
-
-        //Troche efektow ubocznych:
-        //Przekatna ekranu w calach (na oszacowanie wielkosci tekstu wyswietlanie podpowiedzi pod obrazkiem):
-        val x = Math.pow(dm.widthPixels / dm.xdpi.toDouble(), 2.0)
-        val y = Math.pow(dm.heightPixels / dm.ydpi.toDouble(), 2.0)
-        screenInches = Math.sqrt(x + y)
 
         //podrasowanie na Kotlin - 2020.07.03:
         btH = when (lBts) {
