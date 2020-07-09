@@ -11,8 +11,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.postDelayed
+import autyzmsoft.pl.liczykropka.MojGenerator.*
 import kotlinx.android.synthetic.main.activity_main.*
-
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,8 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     val tButtons: Array<MojButton?> = arrayOfNulls<MojButton>(6) //tablica na klawisze
     var bActive: MojButton? = null;    //ktory klawisz kliknieto = jest aktualnie aktywny
-
-    val zbLiczb = mutableSetOf<Int>()
 
 
     val lBts: Int = 6                  //liczba buttonow (z Ustawien)
@@ -65,29 +64,26 @@ class MainActivity : AppCompatActivity() {
         //
         oszacujWysokoscButtonow_i_Tekstu()
         //
-        zbLiczb.clear()
-        var gen = -1;
-        zbLiczb.add(gen)
 
+        val mGen:MojGenerator = MojGenerator(0,7)
         for (i in 0 until lBts) {
 
-            while (zbLiczb.contains(gen)) {
-                gen = (0..6).random();
+            try {
+                mb = MojButton(this, mGen.dajWartUnikalna(), false, txSize, btH)
+                mb.setOnClickListener(coNaKlikNaBtn)
+                tButtons[i] = mb
+                buttons_area.addView(tButtons[i])
+                //Ustawienie marginesow miedzy buttonami (musi byc poza konstruktorem - klawisz musi fizyczne lezec na layoucie, inaczej nie dziala):
+                val params: LinearLayout.LayoutParams
+                params = tButtons[i]?.getLayoutParams() as LinearLayout.LayoutParams
+                dx = 10;
+                if (lBts < 4) dx = 20;
+                params.setMargins(0, dx, 0, 0)
+                tButtons[i]?.setLayoutParams(params)
+                tButtons[i]?.setVisibility(View.VISIBLE) //za chwile pokaze z opoznieniem - efekciarstwo ;)
+            } catch(e: CustomExceptionSkib) {
+                e.printStackTrace()
             }
-            zbLiczb.add(gen)
-
-            mb = MojButton(this, gen, false, txSize, btH)
-            mb.setOnClickListener(coNaKlikNaBtn)
-            tButtons[i] = mb
-            buttons_area.addView(tButtons[i])
-            //Ustawienie marginesow miedzy buttonami (musi byc poza konstruktorem - klawisz musi fizyczne lezec na layoucie, inaczej nie dziala):
-            val params: LinearLayout.LayoutParams
-            params = tButtons[i]?.getLayoutParams() as LinearLayout.LayoutParams
-            dx = 10;
-            if (lBts < 4) dx = 20;
-            params.setMargins(0, dx, 0, 0)
-            tButtons[i]?.setLayoutParams(params)
-            tButtons[i]?.setVisibility(View.VISIBLE) //za chwile pokaze z opoznieniem - efekciarstwo ;)
 
         }
     }  //koniec Funkcji
